@@ -44,6 +44,11 @@ class Sentiment:
 
 
 	def create_sets(self, path, boundary=60):
+		'''
+		This method is for creating training and testing
+		sets for your classifiers. It actually has no use
+		for this module, but serves as a reference
+		'''
 		featuresets_f = open(path, "rb")
 		self.feature_sets = pickle.load(featuresets_f)
 		featuresets_f.close()
