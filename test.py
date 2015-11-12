@@ -2,24 +2,17 @@ from sentiment import TwitterSentiment
 
 twitter = TwitterSentiment()
 test_list = [
-	'New ways to use old information 》Move Over, Humans: Next Evolution in #Science? @Ayasdi http://bit.ly/1LMnmAC  #BigData #machinelearning',
-	'Get 50+ *free* #DataScience Books at http://bit.ly/1Or1j5Z   #abdsc #BigData #Analytics #MachineLearning ',
-	'Dispel Pulp Fiction: Real Machine Intelligence Bleeding Edge: https://www.linkedin.com/pulse/real-machine-intelligence-bleeding-edge-david-ray?published=u … @homeAIinfo #machinelearning',
-	'Musical Genres Classified Using Entropy  | MIT Tech http://bit.ly/1NtigtK  #DataScience #MachineLearning ',
-	'New NVIDIA hyperscale accelerators boost #machinelearning workloads to enable new #AI apps. http://nvda.ly/UufTy',
-	'An Amazing Tour of Machine Learning Algorithms @TeachTheMachine http://ow.ly/SYL6k  #machinelearning #bigdata ',
-	'Blueberry picking robot could win $250,000 prize | http://goo.gl/fdm6vs  #Robotics #MachineLearning #AI #Challenge'
+	'Court affirmed 4th Amendment protections against NSA\'s mass surveillance, defending "the right to be left alone."',
+	'Germany spies among friends: controversy grows over espionage activities http://dw.com/p/1H4Hx  #NSA',
+	'Is the NSA Using Zero-Day Exploits before Reporting Them? https://hacked.com/nsa-using-zero-day-exploits-reporting/ … #Bitcoin ',
+	'This story piqued our interest because NSA isn\'t our usual criminal informant...  #ChicagoPD',
+	'Appeals Court Says NSA Can Keep Trampling 4th Amendment With Phone Surveillance Program For Now http://goo.gl/fb/YL5Ay8 ',
+	'Judge Orders #NSA to Stop Collecting Call Records — Another BIG Win for #Privacy Advocates http://www.usnews.com/news/articles/2015/11/09/judge-orders-nsa-to-stop-collecting-call-records … … ',
+	'nowden Vindicated as Judge Shuts Down NSA Bulk Spying in Epic Smackdown http://theantimedia.org/snowden-vindicated-as-judge-shuts-down-nsa-bulk-spying-in-epic-smackdown/ …',
+	'A US judge’s ruling against the NSA is a big win for Edward Snowden http://qz.com/545978/a-federal-judges-ruling-against-the-nsa-is-a-big-win-for-edward-snowden/ …',
+	'Weeks before NSA bulk phone spying ends, US judge (kinda) reins in program http://arstechnica.com/tech-policy/2015/11/weeks-before-nsa-bulk-phone-spying-ends-us-judge-kinda-reins-in-program/ … by @dmkravets',
+	'ICYMI, federal judge ruled that NSA’s phone records collection program violates the Constitution http://bit.ly/1NG6bmY '
 ]
 
-sentiments = []
+print(twitter.get_sentiment(test_list))
 
-for entry in test_list:
-	sentiments.append(twitter.analyse(entry)[0])
-
-pos_count = sentiments.count('pos')
-neg_count = sentiments.count('neg')
-
-if pos_count > neg_count:
-	print('sentiment is positive')
-else:
-	print('sentiment is negative')

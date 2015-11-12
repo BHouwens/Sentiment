@@ -100,14 +100,31 @@ class Sentiment:
 				self.LinearSVC
 			)
 
-	def analyse(self, text, lower_limit=0.4):
-		features = self.find_features(text)
+	def analyse(self, data, lower_limit):
+		self.sentiments = []
 
-		if self.election_classifier.unanimity(features) < lower_limit:
-			return 'neu', '< lower limit'
+		for text in data:
+			features = self.find_features(text)
+
+			if self.election_classifier.unanimity(features) < lower_limit:
+				self.sentiments.append(self.BernoulliNB_classifier.classify(features))
+			else:
+				self.sentiments.append(self.election_classifier.vote(features))
+
+
+	def get_sentiment(self, data, lower_limit=0.4):
+		self.analyse(data, lower_limit)
+		total = len(self.sentiments)
+		proportion = self.sentiments.count('pos') / total
+
+		if proportion > 0.75:
+			return 'very good'
+		elif proportion > 0.5:
+			return 'good'
+		elif proportion > 0.25:
+			return 'bad'
 		else:
-			return self.election_classifier.vote(features), self.election_classifier.unanimity(features)
-
+			return 'very bad'
 
 
 class TwitterSentiment(Sentiment):
