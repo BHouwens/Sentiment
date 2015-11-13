@@ -160,15 +160,15 @@ class Sentiment:
 
 class TwitterSentiment(Sentiment):
 	def __init__(self):
-		word_features5k_f = open("pickled/word_features5k.pickle", "rb")
+		word_features5k_f = open("pickled/twitter/resources/word_features5k.pickle", "rb")
 		self.word_features = pickle.load(word_features5k_f)
 		word_features5k_f.close()
 
-		self.nltk_classifier_nb('pickled/originalnaivebayes5k.pickle')
-		self.multinomial_nb('pickled/MNB_classifier5k.pickle')
-		self.bernoulli_nb('pickled/BernoulliNB_classifier5k.pickle')
-		self.logistic_regress('pickled/LogisticRegression_classifier5k.pickle')
-		self.linear_svc('pickled/LinearSVC_classifier5k.pickle')
+		self.nltk_classifier_nb('pickled/twitter/classifiers/originalnaivebayes5k.pickle')
+		self.multinomial_nb('pickled/twitter/classifiers/MNB_classifier5k.pickle')
+		self.bernoulli_nb('pickled/twitter/classifiers/BernoulliNB_classifier5k.pickle')
+		self.logistic_regress('pickled/twitter/classifiers/LogisticRegression_classifier5k.pickle')
+		self.linear_svc('pickled/twitter/classifiers/LinearSVC_classifier5k.pickle')
 		self.election()
 
 
