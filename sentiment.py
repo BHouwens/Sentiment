@@ -101,6 +101,10 @@ class Sentiment:
 			)
 
 	def analyse(self, data, lower_limit):
+		'''
+		Performs the sentiment analysis for a list of text data
+		'''
+
 		self.sentiments = []
 
 		for text in data:
@@ -113,6 +117,11 @@ class Sentiment:
 
 
 	def get_sentiment(self, data, lower_limit=0.4):
+		'''
+		Used for deriving sentiment on a list of data around 
+		a particular topic, such as stock trends or tweets
+		'''
+
 		self.analyse(data, lower_limit)
 		total = len(self.sentiments)
 		proportion = self.sentiments.count('pos') / total
@@ -125,6 +134,28 @@ class Sentiment:
 			return 'bad'
 		else:
 			return 'very bad'
+
+
+	def get_sentiment_single(self, text):
+		'''
+		Used for deriving sentiment on a single body of text,
+		such as a review or critique
+		'''
+
+		features = self.find_features(text)
+
+		if self.election_classifier.unanimity(features) > 0.75:
+			if self.election_classifier.vote(features) == 'pos':
+				return 'very good'
+			else:
+				return 'very bad'
+		else:
+			if self.election_classifier.vote(features) == 'pos':
+				return 'good'
+			else:
+				return 'bad'
+
+
 
 
 class TwitterSentiment(Sentiment):
