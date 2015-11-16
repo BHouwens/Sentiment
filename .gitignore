@@ -2,3 +2,5 @@ __pycache__
 twitter_samples/tweets.20150430-223406.json
 pickled/feature_sets.pickle
 venv
+credentials.py
+movie_scale.py
